@@ -22,7 +22,7 @@
                     </x-nav-link>
 
                     {{-- My Projects --}}
-                    <x-nav-link :href="route('projects.userprojects')" :active="request()->routeIs('projects.userprojects')">
+                    <x-nav-link :href="route('user-projects')" :active="request()->routeIs('user-projects')">
                         {{ __('Mis Proyectos') }}
                     </x-nav-link>
 

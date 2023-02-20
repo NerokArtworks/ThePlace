@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ProjectController extends Controller
 {
@@ -34,5 +35,6 @@ class ProjectController extends Controller
 
         $myprojects = $user->projects()->get(); // PAGINATE METHOD
         return view('projects.user-projects')->with('myprojects', $myprojects)->with('url', $url);
+        // return Redirect::to('projects/user-projects')->with('myprojects', $myprojects)->with('url', $url);
     }
 }

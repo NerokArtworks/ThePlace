@@ -33,5 +33,6 @@ Route::middleware([
     })->name('home');
 
     Route::resource('projects', ProjectController::class)->middleware(['auth', 'verified']);
+    Route::get('projects/user-projects', [ProjectController::class, 'userprojects'])->middleware(['auth', 'verified'])->name('user-projects');
     Route::post('save-project/{project}', SaveProjectController::class)->name('save-project');
 });

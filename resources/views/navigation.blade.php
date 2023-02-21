@@ -12,9 +12,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{-- <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                     {{-- Projects Index --}}
                     <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
@@ -24,6 +24,11 @@
                     {{-- My Projects --}}
                     <x-nav-link :href="route('user-projects')" :active="request()->routeIs('user-projects')">
                         {{ __('Mis Proyectos') }}
+                    </x-nav-link>
+
+                    {{-- Saved Projects --}}
+                    <x-nav-link :href="route('saved-projects')" :active="request()->routeIs('saved-projects')">
+                        {{ __('Guardados') }}
                     </x-nav-link>
 
                     {{-- Create Project --}}

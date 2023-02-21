@@ -32,7 +32,19 @@ Route::middleware([
         return view('index');
     })->name('home');
 
+    // La creo encima de resurce('projects') para que no de error
+    // ya que pertenece al mismo "dominio" 'projects/'
+    Route::get('projects/user-projects', [ProjectController::class, 'userProjects'])
+        ->middleware(['auth', 'verified'])
+        ->name('user-projects');
+
+    // La creo encima de resurce('projects') para que no de error
+    // ya que pertenece al mismo "dominio" 'projects/'
+    Route::get('projects/saved-projects', [ProjectController::class, 'savedProjects'])
+        ->middleware(['auth', 'verified'])
+        ->name('saved-projects');
+
     Route::resource('projects', ProjectController::class)->middleware(['auth', 'verified']);
-    Route::get('projects/user-projects', [ProjectController::class, 'userprojects'])->middleware(['auth', 'verified'])->name('user-projects');
+
     Route::post('save-project/{project}', SaveProjectController::class)->name('save-project');
 });

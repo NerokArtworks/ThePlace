@@ -4,9 +4,9 @@
     <div class="fading-divider"></div>
 
     <section class="main-projects w-full">
-        <h2 class="main-projects-title">Your Projects</h2>
+        <h2 class="main-projects-title">Saved Projects</h2>
         <article class="projects-titles-wrapper">
-            @foreach ($myprojects as $project)
+            @foreach ($savedprojects as $project)
                 <div class="project-item">
                     <h4 class="project-title">{{$project->titulo}}</h4>
                     <div class="project-img-wrapper">

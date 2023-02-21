@@ -23,18 +23,32 @@ class ProjectController extends Controller
         return view('projects.index')->with('projects', $projects)->with('url', $url);
     }
 
+    public function userProjects()
+    {
+        $url = '/storage/img/';
+        $user = User::find(Auth::id());
+
+        $myprojects = $user->projects()->get();
+        return view('projects.user-projects')->with('myprojects', $myprojects)->with('url', $url);
+        // return Redirect::to('projects/user-projects')->with('myprojects', $myprojects)->with('url', $url);
+    }
+
+    public function savedProjects()
+    {
+        $url = '/storage/img/';
+        $user = User::find(Auth::id());
+
+        $savedprojects = $user->savedProjects()->get();
+        return view('projects.saved-projects')->with('savedprojects', $savedprojects)->with('url', $url);
+        // return Redirect::to('projects/user-projects')->with('myprojects', $myprojects)->with('url', $url);
+    }
+
     public function create()
     {
         return view('projects.create');
     }
 
-    public function userprojects()
-    {
-        $url = '/storage/img/';
-        $user = User::find(Auth::id());
-
-        $myprojects = $user->projects()->get(); // PAGINATE METHOD
-        return view('projects.user-projects')->with('myprojects', $myprojects)->with('url', $url);
-        // return Redirect::to('projects/user-projects')->with('myprojects', $myprojects)->with('url', $url);
+    public function show() {
+        return ("show");
     }
 }

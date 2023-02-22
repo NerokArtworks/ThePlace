@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="w-full">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            <div class="flex w-full">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
@@ -33,9 +33,20 @@
 
                     {{-- Create Project --}}
                     <x-nav-link :href="route('projects.create')" :active="request()->routeIs('projects.create')">
-                        {{ __('Crear proyecto') }}
+                        {{ __('Subir proyecto') }}
                     </x-nav-link>
                 </div>
+
+                @auth
+                    @if (Auth::user()->rol == 'admin')
+                        <div class="flex-1 flex justify-end admin-panel hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            {{-- Admin Panel --}}
+                            <x-nav-link :href="route('projects.create')" :active="request()->routeIs('projects.create')">
+                                {{ __('Admin') }}
+                            </x-nav-link>
+                        </div>
+                    @endif
+                @endauth
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

@@ -7,7 +7,7 @@
         <h2 class="main-projects-title">Saved Projects</h2>
         <article class="projects-titles-wrapper">
             @foreach ($savedprojects as $project)
-                <div class="project-item">
+                <div class="project-item hover">
                     <h4 class="project-title">{{$project->titulo}}</h4>
                     <div class="project-img-wrapper">
                         <img src="{{$url.$project->imagen}}" alt="{{$project->titulo}}">
@@ -15,7 +15,7 @@
                     <div class="project-info">
                         <p>{{ $project->description }}</p>
                         <div class="project-buttons d-flex">
-                            <a href="">See more</a>
+                            <a href="{{route('projects.show', ['project'=>$project->id])}}">See more</a>
                             <!-- OPCIÓN NO ASÍNCRONA DE GUARDAR PROYECTOS -->
                             <!-- <form action="{{ route('save-project', $project->id) }}" method="POST">
                                 @csrf

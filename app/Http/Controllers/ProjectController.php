@@ -48,7 +48,9 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    public function show() {
-        return ("show");
+    public function show($project) {
+        $url = '/storage/img/';
+        $project = Project::findOrFail($project);
+        return view('projects.show')->with('project', $project)->with('url', $url);
     }
 }

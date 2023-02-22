@@ -15,6 +15,16 @@
             </div>
 
             <div class="mt-4">
+                <x-label for="lastname" value="{{ __('Lastname') }}" />
+                <x-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="dni" value="{{ __('DNI') }}" />
+                <x-input id="dni" class="block mt-1 w-full" type="text" name="dni" :value="old('dni')" required autofocus autocomplete="dni" />
+            </div>
+
+            <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>

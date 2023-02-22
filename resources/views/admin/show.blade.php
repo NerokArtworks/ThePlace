@@ -1,6 +1,6 @@
 <x-app-layout>
     <section class="hero-section relative">
-        <img src="{{asset('/storage/img/paper.jpg')}}" alt="paper_bg" class="hero-bg absolute top-0 left-0 w-full h-screen">
+        <img src="{{asset('/storage/img/texture.jpg')}}" alt="paper_bg" class="hero-bg absolute top-0 left-0 w-full h-screen">
         <article class="projects-titles-wrapper">
             <div class="relative overflow-x-auto sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 shadow-md">

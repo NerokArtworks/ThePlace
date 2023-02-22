@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SaveProjectController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,8 @@ Route::middleware([
     Route::get('/home', function () {
         return view('index');
     })->name('home');
+
+    Route::resource('admin', AdminController::class)->middleware(['auth', 'admin']);
 
     // La creo encima de resurce('projects') para que no de error
     // ya que pertenece al mismo "dominio" 'projects/'

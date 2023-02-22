@@ -23,6 +23,7 @@
         <script src="https://kit.fontawesome.com/9e9e2fd9c0.js" crossorigin="anonymous"></script>
 
         <!-- Styles -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"  rel="stylesheet" />
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
@@ -52,5 +53,6 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     </body>
 </html>

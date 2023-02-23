@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class ProjectController extends Controller
 {
@@ -13,13 +14,13 @@ class ProjectController extends Controller
     {
         $url = '/storage/img/';
         $user = User::find(Auth::id());
-        // $mycars = $user->cars()->get();
+        // $projects = $user->cars()->get();
 
         // Pagination => https://laravel.com/docs/10.x/pagination#main-content
         // $myprojects = $user->projects()->get(); // PAGINATE METHOD
         $projects = Project::get(); // Todos los proyectos
-        // $mycars = $user->cars()->simplePaginate(3); // PAGINATE METHOD
-        // $mycars = $user->cars()->cursorPaginate(3); // PAGINATE METHOD
+        // $projects = $user->cars()->simplePaginate(3); // PAGINATE METHOD
+        // $projects = $user->cars()->cursorPaginate(3); // PAGINATE METHOD
         return view('projects.index')->with('projects', $projects)->with('url', $url);
     }
 
@@ -43,9 +44,33 @@ class ProjectController extends Controller
         // return Redirect::to('projects/user-projects')->with('myprojects', $myprojects)->with('url', $url);
     }
 
-    public function create()
-    {
+    public function create() {
         return view('projects.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'titulo'=>'required|unique:projects',
+            'descripcion'=>'required',
+            'imagen'=>'required|image'
+        ]);
+        try {
+            $project = new Project();
+            $project->titulo = $request->input('titulo');
+            $project->description = $request->input('descripcion');
+            $project->fecha = now();
+            $project->user_id = Auth::id();
+
+            $nombreFoto = time() . "-" . $request->file('imagen')->getClientOriginalName();
+            $project->imagen = $nombreFoto;
+            $project->save();
+            $request->file('imagen')->storeAs('storage/img', $nombreFoto);
+
+            return redirect()->route('user-projects')->with('status', "Proyecto añadido correctamente");
+        } catch (QueryException $ex) {
+            return redirect()->route('projects.create')->with('status', "No se ha podido añadir el proyecto correctamente");
+        }
     }
 
     public function show($project) {

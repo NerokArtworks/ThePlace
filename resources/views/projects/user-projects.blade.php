@@ -4,8 +4,8 @@
     <div class="fading-divider"></div>
 
     <section class="main-projects w-full">
-        @if (isset($status))
-            {{$status}}
+        @if (session('status'))
+            {{session('status')}}
         @endif
         <h2 class="main-projects-title">Your Projects</h2>
         <article class="projects-titles-wrapper">

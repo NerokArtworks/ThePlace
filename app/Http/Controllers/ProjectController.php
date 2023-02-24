@@ -51,7 +51,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'titulo'=>'required|unique:projects',
+            'titulo'=>'required|max:10|unique:projects',
             'descripcion'=>'required',
             'imagen'=>'required|image'
         ]);
@@ -65,7 +65,7 @@ class ProjectController extends Controller
             $nombreFoto = time() . "-" . $request->file('imagen')->getClientOriginalName();
             $project->imagen = $nombreFoto;
             $project->save();
-            $request->file('imagen')->storeAs('storage/img', $nombreFoto);
+            $request->file('imagen')->storeAs('public/img', $nombreFoto);
 
             return redirect()->route('user-projects')->with('status', "Proyecto añadido correctamente");
         } catch (QueryException $ex) {

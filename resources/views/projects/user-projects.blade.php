@@ -1,9 +1,5 @@
 <x-app-layout>
-    @include('components.sections.hero-section')
-
-    <div class="fading-divider"></div>
-
-    <section class="main-projects w-full">
+    <section class="main-projects no-hero w-full">
         @if (session('status'))
             {{session('status')}}
         @endif

@@ -1,13 +1,13 @@
 <x-app-layout>
     <div class="fading-divider"></div>
 
-    <section class="main-projects w-full h-full">
+    <section class="main-projects w-full">
         <h2 class="main-projects-title">See Project · {{ $project->titulo }}</h2>
         <article class="projects-titles-wrapper">
-            <div class="project-item">
+            <div class="project-item  h-auto">
                 <h4 class="project-title">{{$project->titulo}}</h4>
                 <div class="project-img-wrapper">
-                    <img src="{{$url.$project->imagen}}" alt="{{$project->titulo}}">
+                    <img src="{{asset($url.$project->imagen)}}" alt="{{$project->titulo}}">
                 </div>
                 <div class="project-info">
                     <p>{{ $project->description }}</p>
@@ -27,6 +27,12 @@
                         <!-- OPCIÓN ASÍNCRONA USANDO LIVEWIRE -->
                         @livewire('save-project-button', ['project' => $project])
                     </div>
+                    @if (session('status'))
+                        {{session('status')}}
+                    @endif
+                    @if (Auth::user()->id == $project->user_id)
+                        @livewire('project-form', ['project_id' => $project->id])
+                    @endif
                 </div>
             </div>
         </article>

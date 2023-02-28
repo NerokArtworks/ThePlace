@@ -4,8 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Project;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -13,8 +11,9 @@ class ProjectForm extends Component
 {
     use WithFileUploads;
     public $mostrar = false;
-    public $project_id, $titulo, $descripcion, $imagen;
+    public $project_id, $titulo, $descripcion, $nuevaImagen, $imagen;
     public $project;
+    public $url = 'storage/img/';
 
     /**
      * Reglas de form
@@ -54,11 +53,11 @@ class ProjectForm extends Component
             $project->titulo = $this->titulo;
             $project->description = $this->descripcion;
 
-            if ($this->imagen != null) {
-                $nombreFoto = time() . "-" . $this->imagen->getClientOriginalName();
+            if ($this->nuevaImagen != null) {
+                $nombreFoto = time() . "-" . $this->nuevaImagen->getClientOriginalName();
                 // Storage::putFileAs('app/public/img', $this->imagen, $nombreFoto);
-                $this->imagen->storeAs('public/img', $nombreFoto);
-                $project->imagen = $nombreFoto;
+                $this->nuevaImagen->storeAs('/img', $nombreFoto, 'public');
+                $project->nuevaImagen = $nombreFoto;
             }
 
             $project->save();
@@ -81,5 +80,8 @@ class ProjectForm extends Component
      */
     public function updated($input) {
         $this->validateOnly($input);
+        if ($input == "nuevaImagen") {
+            $this->imagen = null;
+        }
     }
 }

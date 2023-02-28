@@ -26,7 +26,7 @@ class ProjectController extends Controller
 
     public function userProjects()
     {
-        $url = '/storage/img/';
+        $url = 'storage/img/';
         $user = User::find(Auth::id());
 
         $myprojects = $user->projects()->get();
@@ -36,7 +36,7 @@ class ProjectController extends Controller
 
     public function savedProjects()
     {
-        $url = '/storage/img/';
+        $url = 'storage/img/';
         $user = User::find(Auth::id());
 
         $savedprojects = $user->savedProjects()->get();
@@ -74,7 +74,7 @@ class ProjectController extends Controller
     }
 
     public function show($project) {
-        $url = '/storage/img/';
+        $url = 'storage/img/';
         $project = Project::findOrFail($project);
         return view('projects.show')->with('project', $project)->with('url', $url);
     }

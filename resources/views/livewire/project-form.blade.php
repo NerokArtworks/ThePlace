@@ -35,7 +35,7 @@
                 <div class="flex text-sm text-gray-600">
                     <label for="imagen" class="relative cursor-pointer rounded-md font-medium text-white hover:text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                         <span class="border border-white rounded-md p-1">Upload an image</span>
-                        <input id="imagen" wire:model='imagen' name="imagen" type="file" class="sr-only">
+                        <input id="imagen" wire:model='nuevaImagen' name="imagen" type="file" class="sr-only">
                     </label>
                     <p class="pl-1 text-white">&nbsp for your project</p>
                 </div>
@@ -46,9 +46,12 @@
                     {{$message}}
                 @enderror
             </div>
-            {{-- @if ($imagen)
-            <img src="{{$imagen->temporaryUrl()}}" width="100%" height="auto" class="uploaded-img">
-            @endif --}}
+            @if ($imagen != null)
+            <img src="{{asset($url.$imagen)}}" width="100%" height="auto" class="uploaded-img pointer-events-none" style="mix-blend-mode: color-burn;">
+            @endif
+            @if ($nuevaImagen)
+            <img src="{{$nuevaImagen->temporaryUrl()}}" width="100%" height="auto" class="uploaded-img pointer-events-none" style="mix-blend-mode: multiply;">
+            @endif
         </div>
 
         <div class="flex justify-between">

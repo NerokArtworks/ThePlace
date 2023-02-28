@@ -34,7 +34,7 @@ class CreateProject extends Component
             $this->validate();
 
             $nombreFoto = time() . "-" . $this->imagen->getClientOriginalName();
-            $this->imagen->storeAs('img', $nombreFoto, 'public');
+            $this->imagen->storeAs('/img', $nombreFoto, 'public');
             Project::create([
                 'titulo' => $this->titulo,
                 'description' => $this->descripcion,

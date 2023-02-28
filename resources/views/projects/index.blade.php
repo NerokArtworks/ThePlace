@@ -10,7 +10,7 @@
                 <div class="project-item hover">
                     <h4 class="project-title">{{$project->titulo}}</h4>
                     <div class="project-img-wrapper">
-                        <img src="{{asset($url.$project->imagen)}}" alt="{{$project->titulo}}">
+                        <img src="{{$url.$project->imagen}}" alt="{{$project->titulo}}">
                     </div>
                     <div class="project-info">
                         <p>{{ $project->description }}</p>

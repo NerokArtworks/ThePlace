@@ -37,7 +37,7 @@
             </p>
         </div>
         @if ($imagen)
-        <img src="{{$imagen->temporaryUrl()}}" width="100%" height="auto" class="uploaded-img opacity-80 grayscale">
+        <img src="{{$imagen->temporaryUrl()}}" width="100%" height="auto" class="uploaded-img opacity-80 grayscale pointer-events-none">
         @endif
     </div>
     <button type="button" wire:click="save()" class="text-white font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center">

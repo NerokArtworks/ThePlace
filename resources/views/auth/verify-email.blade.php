@@ -1,7 +1,11 @@
 <x-guest-layout>
-    <x-authentication-card>
+    <div class="absolute w-screen h-screen overflow-hidden top-0 left-0">
+        <img src="{{asset('/storage/img/spy.jpg')}}" alt="verify_email_bg" class="hero-bg w-full h-auto">
+    </div>
+    <x-authentication-card-login>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            {{-- <x-authentication-card-logo /> --}}
+            <h1 class="font-bold text-gray-200">THE PLACE</h1>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -28,18 +32,18 @@
             <div>
                 <a
                     href="{{ route('profile.show') }}"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md"
                 >
                     {{ __('Edit Profile') }}</a>
 
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
 
-                    <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-2">
+                    <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md ml-2">
                         {{ __('Log Out') }}
                     </button>
                 </form>
             </div>
         </div>
-    </x-authentication-card>
+    </x-authentication-card-login>
 </x-guest-layout>

@@ -53,10 +53,10 @@
                         <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                     </div>
                 </td>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     {{$project->user_id}}
                 </th>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     {{$project->titulo}}
                 </th>
                 <td class="px-6 py-4 w-1/2">
@@ -68,7 +68,7 @@
                 <td class="px-6 py-4 w-1/6 project-table-img">
                     <img class="rounded-t-lg w-max" src="{{asset($url.$project->imagen)}}" alt="" />
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 flex flex-col justify-center">
                     <a href="{{route('projects.show', ['project'=>$project->id])}}">
                     <button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Show</button>
                     </a>

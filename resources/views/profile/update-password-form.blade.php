@@ -1,10 +1,14 @@
 <x-form-section submit="updatePassword">
     <x-slot name="title">
-        {{ __('Update Password') }}
+        <h2 class="text-gray-100">
+            {{ __('Update Password') }}
+        </h2>
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        <span class="text-gray-300">
+            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        </span>
     </x-slot>
 
     <x-slot name="form">

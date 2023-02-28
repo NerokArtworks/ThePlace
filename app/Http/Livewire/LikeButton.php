@@ -29,7 +29,7 @@ class LikeButton extends Component
             // Delete
         } else {
             // Store
-            return Http::post('localhost:8000/liked-projects', [
+            return Http::timeout(10)->post('http://localhost:8000/api/liked-projects', [
                 'project_id' => $project_id
             ]);
         }

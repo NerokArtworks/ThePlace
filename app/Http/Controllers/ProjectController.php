@@ -12,7 +12,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $url = '/storage/img/';
+        $url = 'storage/img/';
         $user = User::find(Auth::id());
         // $projects = $user->cars()->get();
 
@@ -77,5 +77,16 @@ class ProjectController extends Controller
         $url = '/storage/img/';
         $project = Project::findOrFail($project);
         return view('projects.show')->with('project', $project)->with('url', $url);
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $project = Project::findOrFail($id);
+            $project->delete();
+            return redirect()->route('admin.index')->with('status', "Proyecto borrado correctamente");
+        } catch (QueryException $ex) {
+            return redirect()->route('admin.index')->with('status', "No se ha podido borrar el proyecto correctamente");
+        }
     }
 }

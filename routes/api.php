@@ -19,7 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/liked-projects', APILikedProjects::class);
+// Route::apiResource('/liked-projects', APILikedProjects::class);
     // ->middleware(['auth', 'verified']);
-
-
+// Route::get('/likes', [APILikedProjects::class, 'likes'])->middleware('api');
+    Route::apiResource('/liked-projects', APILikedProjects::class);
+    // Route::post('/liked-projects', [APILikedProjects::class, 'store']);

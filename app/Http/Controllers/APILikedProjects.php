@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\LikedProject;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class APILikedProjects extends Controller
 {
@@ -28,9 +30,10 @@ class APILikedProjects extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Project $project)
+    public function store(Request $request)
     {
         $user = $request->user();
+        $project = Project::findOrFail($request->input('project_id'));
         if (!$user) {
             return response()->json(['status' => 'Unauthorized'], 401);
         }

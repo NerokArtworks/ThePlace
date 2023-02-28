@@ -23,9 +23,8 @@ class APILikedProjectsRequest extends FormRequest
      */
     public function rules() {
         return [
-            'matricula' => 'required', // El unique no se puede utilizar para actualizar
-            'marca' => 'required',
-            'modelo' => 'required',
+            'project_id' => 'required', // El unique no se puede utilizar para actualizar
+            'user_id' => 'required'
         ];
     }
 }

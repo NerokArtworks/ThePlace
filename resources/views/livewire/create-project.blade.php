@@ -4,14 +4,14 @@
     @endif
     <div class="mb-6">
         <label for="titulo" class="block mb-2 text-sm font-medium text-white dark:text-white">Project Title</label>
-        <input type="text" id="titulo" wire:model='titulo' name="titulo" class="border border-white text-white text-sm rounded-lg block w-full p-2.5 placeholder-white" placeholder="THE title" required>
+        <input type="text" id="titulo" wire:model='titulo' name="titulo" class="border border-white text-gray-900 text-sm rounded-lg block w-full p-2.5 placeholder-white" placeholder="THE title" required>
         @error('titulo')
         {{$message}}
         @enderror
     </div>
     <div class="mb-6">
         <label for="descripcion" class="block mb-2 text-sm font-medium text-white dark:text-white">Project Description</label>
-        <textarea wire:model='descripcion' name="descripcion" rows="4" class="block p-2.5 w-full text-sm text-white bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 placeholder-white dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="THE description..."></textarea>
+        <textarea wire:model='descripcion' name="descripcion" rows="4" class="block p-2.5 w-full text-gray-900 text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 placeholder-white dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="THE description..."></textarea>
         @error('descripcion')
         {{$message}}
         @enderror
@@ -37,7 +37,7 @@
             </p>
         </div>
         @if ($imagen)
-        <img src="{{$imagen->temporaryUrl()}}" width="100%" height="auto" class="uploaded-img">
+        <img src="{{$imagen->temporaryUrl()}}" width="100%" height="auto" class="uploaded-img opacity-80 grayscale">
         @endif
     </div>
     <button type="button" wire:click="save()" class="text-white font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center">

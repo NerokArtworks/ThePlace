@@ -22,7 +22,6 @@ Route::get('/', function () {
 });
 
 Route::apiResource('/liked-projects', APILikedProjects::class);
-// Route::get('/liked-projects', [APILikedProjects::class, 'index']);
 
 Route::middleware([
     'auth:sanctum',

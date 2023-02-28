@@ -1,7 +1,8 @@
 <x-guest-layout>
-    <x-authentication-card>
+    <x-authentication-card-login>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            {{-- <x-authentication-card-logo /> --}}
+            <h1 class="font-bold">THE PLACE</h1>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -24,5 +25,5 @@
                 </x-button>
             </div>
         </form>
-    </x-authentication-card>
+    </x-authentication-card-login>
 </x-guest-layout>

@@ -5,6 +5,13 @@
         @endif
         <h2 class="main-projects-title">Your Projects</h2>
         <article class="projects-titles-wrapper">
+            @if (count($myprojects) == 0)
+                <div class="mx-auto my-auto missing w-1/2 h-full flex flex-col items-center justify-center">
+                    <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
+                    <p class="my-10">Todavía no has subido ningún proyecto</p>
+                    <a href="{{route('projects.create')}}" class="upload">Subir proyecto</a>
+                </div>
+            @endif
             @foreach ($myprojects as $project)
                 <div class="project-item hover">
                     <h4 class="project-title">{{$project->titulo}}</h4>

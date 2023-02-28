@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\APILikedProjects;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SaveProjectController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::apiResource('/liked-projects', APILikedProjects::class);
+// Route::get('/liked-projects', [APILikedProjects::class, 'index']);
 
 Route::middleware([
     'auth:sanctum',

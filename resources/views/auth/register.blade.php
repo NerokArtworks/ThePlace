@@ -1,7 +1,9 @@
 <x-guest-layout>
-    <x-authentication-card>
+    <img src="{{asset('/storage/img/hands.jpg')}}" alt="login_bg" class="hero-bg absolute top-0 left-0 w-1/2 h-screen">
+    <x-authentication-card-register>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            {{-- <x-authentication-card-logo /> --}}
+            <h1 class="font-bold text-gray-200">THE PLACE</h1>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -66,5 +68,5 @@
                 </x-button>
             </div>
         </form>
-    </x-authentication-card>
+    </x-authentication-card-register>
 </x-guest-layout>

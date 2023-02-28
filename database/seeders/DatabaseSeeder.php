@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\LikedProject;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,6 +53,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()->create([
+            'name' => 'Miguel',
+            'lastname' => 'López',
+            'dni' => '12345678Q',
+            'email' => 'mlopcob12@iesmarquesdecomares.org',
+            'email_verified_at' => now(),
+        ]);
+
+        User::factory()->create([
+            'name' => 'Admin',
+            'lastname' => 'Admin',
+            'dni' => '11111111Q',
+            'email' => 'admin@admin.com',
+            'email_verified_at' => now(),
+            'rol' => 'admin'
+        ]);
+
+        User::factory(10)->create();
+
         DB::table('projects')->delete();
         foreach($this->projectsArray as $project) {
             $p = new Project();
@@ -60,5 +82,7 @@ class DatabaseSeeder extends Seeder
             $p->user_id = 1;
             $p->save();
         }
+
+        LikedProject::factory()->count(50)->create();
     }
 }

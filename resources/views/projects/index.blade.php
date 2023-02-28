@@ -30,6 +30,7 @@
                             </form> -->
                             <!-- OPCIÓN ASÍNCRONA USANDO LIVEWIRE -->
                             @livewire('save-project-button', ['project' => $project])
+                            @livewire('like-button', ['project' => $project])
                         </div>
                     </div>
                 </div>

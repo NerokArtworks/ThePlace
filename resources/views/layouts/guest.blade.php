@@ -13,10 +13,26 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{{ asset('/storage/css/main.css') }}">
+
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/9e9e2fd9c0.js" crossorigin="anonymous"></script>
+
+        <!-- Styles -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"  rel="stylesheet" />
+        @livewireStyles
     </head>
-    <body>
+    <body class="font-sans antialiased">
+        <!-- Noise BG -->
+        @include('components.noise-bg')
+
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+
+        @livewireScripts
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     </body>
 </html>

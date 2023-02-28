@@ -1,7 +1,14 @@
 <x-app-layout>
-    <section class="main-projects no-hero relative  w-full">
+    <section class="main-projects no-hero relative w-full">
         <h2 class="main-projects-title">Saved Projects</h2>
         <article class="projects-titles-wrapper">
+            @if (count($savedprojects) == 0)
+                <div class="mx-auto my-auto missing w-1/2 h-full flex flex-col items-center justify-center">
+                    <i class="fa-regular fa-bookmark fa-2xl"></i>
+                    <p class="my-10">No tienes proyectos guardados</p>
+                    <a href="{{route('projects.index')}}" class="upload">Ver proyectos</a>
+                </div>
+            @endif
             @foreach ($savedprojects as $project)
                 <div class="project-item hover">
                     <h4 class="project-title">{{$project->titulo}}</h4>
